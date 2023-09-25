@@ -32,12 +32,8 @@ def parse_log(path_to_log):
 # %%
 data = parse_log("log.ParticleInEB")
 df = pd.DataFrame(data).T
-
-# %%
-
 fig = go.Figure()
 fig.add_trace(
     go.Scatter(x=df.index, y=df["Current number of parcels"].astype(float).values)
 )
 fig.show()
-# %%
