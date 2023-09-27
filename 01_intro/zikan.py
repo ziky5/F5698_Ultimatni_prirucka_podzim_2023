@@ -1,5 +1,7 @@
 # %%
 import re
+
+import numpy
 import pandas as pd
 import plotly.graph_objects as go
 
@@ -37,3 +39,5 @@ fig.add_trace(
     go.Scatter(x=df.index, y=df["Current number of parcels"].astype(float).values)
 )
 fig.show()
+
+# %%
