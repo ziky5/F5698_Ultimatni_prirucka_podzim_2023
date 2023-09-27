@@ -32,3 +32,7 @@ Výuka bude probíhat v systému Linux. To je dáno především omezenou zkuše
 4. Jaký editor či IDE používáte?
 5. Používáte git?
 6. Víte, co je to objekt a třída?
+
+# Ukončení předmětu
+
+Zápočet bude udělen na základě aktivity v průběhu semestru, resp. za alespoň dva netriviální příspěvky (commity) do tohoto repozitáře. Během semestru v rámci hodin bude mnoho příležitostí k těmto příspěvkům.
