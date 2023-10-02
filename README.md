@@ -1,4 +1,4 @@
-# Úvodní hodina
+# F5698 - Ultimátní příručka mladého budovatele v Pythonu
 
 ## Cíl předmětu
 
