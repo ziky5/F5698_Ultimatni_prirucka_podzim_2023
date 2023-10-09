@@ -1,6 +1,5 @@
 # %%
 import re
-
 import numpy
 import pandas as pd
 import plotly.graph_objects as go
@@ -32,7 +31,7 @@ def parse_log(path_to_log):
 
 
 # %%
-data = parse_log("log.ParticleInEB")
+data = parse_log("log.laplacianFoam")
 df = pd.DataFrame(data).T
 fig = go.Figure()
 fig.add_trace(
