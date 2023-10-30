@@ -1,0 +1,10 @@
+[project]
+name = "OFParser"
+version = "0.0.1"
+dependencies = [
+    "requests",
+    'importlib-metadata; python_version<"3.8"',
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]  # ["."] by default
