@@ -32,4 +32,4 @@ k_log = log_parse(
     stick = (0, 0),
     ExecutionTime = 642.2,
     ClockTime = 643)
-print(k_log)
+#print(k_log)
