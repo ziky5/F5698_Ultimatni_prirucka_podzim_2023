@@ -82,6 +82,6 @@ Data.getstatus(a)
 Data.getsystem(a)
 # %%
 # Error
-b = Data(time = 20.15, count = 50000.15, mass = 2.0, mmt = 865.0, absmmt = 865.0, en = 300.0, extime = 0.0001)
+# b = Data(time = 20.15, count = 50000.15, mass = 2.0, mmt = 865.0, absmmt = 865.0, en = 300.0, extime = 0.0001)
 # %%
 # Konec :-)
