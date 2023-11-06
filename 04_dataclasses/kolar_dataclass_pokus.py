@@ -33,12 +33,13 @@
 # Import
 
 from dataclasses import dataclass
+from logging import warning
 # %%
 # Definuji balík dat pro jednotlivé záznamy
 
 @dataclass
 class Data():
-    time: float    # Time
+    time: float | int    # Time
     count: int     # Particle counter ("Current number of parcels")
     mass: float    # Mass ("Current mass in system")
     mmt: float     # Linear momentum
@@ -49,13 +50,23 @@ class Data():
 # Nějaké chybové hlášky, aby bylo jasno...
 
     def __post_init__(self):
-        assert isinstance(self.time, float), "Data type of -time- has to be -float-"
+        assert isinstance(self.time, float | int), "Data type of -time- has to be -float-"
         assert isinstance(self.count, int), "Data type of -count- has to be -int-"
         assert isinstance(self.mass, float), "Data type of -mass- has to be -float-"
         assert isinstance(self.mmt, float), "Data type of -mmt- has to be -float-"
         assert isinstance(self.absmmt, float), "Data type of -absmmt- has to be -float-"
         assert isinstance(self.en, float), "Data type of -en- has to be -float-"
         assert isinstance(self.extime, float), "Data type of -extime- has to be -float-"
+    
+
+    @classmethod
+    def read_file(
+        cls: "Data", 
+        path: str,
+        ) -> "Data":
+        a = Data(time = 20.15, count = 50000, mass = 2.0, mmt = 865.0, absmmt = 865.0, en = 300.0, extime = 0.0001)
+        return a
+
 
 # A teď definuji různé užitečné printovací operace,
 # asi se to pak může přepsat (z "printu") na vytažení informace do nějakého dalšího datového souboru
@@ -85,3 +96,9 @@ Data.getsystem(a)
 b = Data(time = 20.15, count = 50000.15, mass = 2.0, mmt = 865.0, absmmt = 865.0, en = 300.0, extime = 0.0001)
 # %%
 # Konec :-)
+
+a = Data.read_file(path)
+
+import pandas as pd
+
+a = pd.read_csv()
