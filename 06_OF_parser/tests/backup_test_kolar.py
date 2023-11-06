@@ -1,8 +1,9 @@
 # %%
 # Import
 import pytest
-from OFParser.kolar import Data
+from OFParser.kolar import Data as dt
 from OFParser.kolar import a
+import numpy as np
 # %%
 
 # class Data():
@@ -18,6 +19,7 @@ from OFParser.kolar import a
 # Nejprve zkouším testovat vytvořenou dataclassu "a", která by měla splňovat všechny parametry:
 
 def test_time_s_type():
+    a = dt(time = 20.15, count = 50000, mass = 2.0, mmt = 865.0, absmmt = 865.0, en = 300.0, extime = 0.0001)
     assert type(a.time) == float
 
 def test_count_s_type() -> None:
@@ -38,8 +40,10 @@ def test_en_s_type() -> None:
 def test_extime_s_type() -> None:
     assert type(a.extime) == float
 
-def test_existence() -> None:
+def test_time_existence() -> None:
     a.time
+
+
     a.count
     a.mass
     a.mmt
@@ -50,16 +54,34 @@ def test_existence() -> None:
 # Potom se snažím o nějakou obecnou definici dataclassy
 # Následující se nesplní, protože potřebují více argumentů -- jakým způsobem že se to dělá, aby ta dataclassa nepotřebovala argumenty? :-)
 
+def test_class_type() -> None:
+        with pytest.raises(TypeError):
+            d = dt(time = 20)
+
 def test_time_type() -> None:
         with pytest.raises(AssertionError):
-            d = Data(time = 1)
+            d = dt(time = 20, count = 50000, mass = 2.0, mmt = 865.0, absmmt = 865.0, en = 300.0, extime = 0.0001)
 
 def test_time_noneg() -> None:
         with pytest.raises(AssertionError):
-            d = Data(time = -1.5)
+            d = dt(time = -1.5)
 
 def test_count_type() -> None:
         with pytest.raises(AssertionError):
-            d = Data(count = 1.5)
+            d = dt(count = 1.5)
 # atd...
+
+def test_aproximate_type() -> None:
+    value = 4.23525746e-22
+    assert np.all()
+
+def test_read_and_init() -> None:
+     a = dt.read(path)
+    
+
+def test_read_and_init() -> None:
+     a = dt.read(path)
+     expected = ''
+     assert str(a) == expected
+     
 # %%
