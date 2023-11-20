@@ -1,5 +1,6 @@
 __pycache__/
 .DS_Store
 OFParser.egg-info
+OFParser2.egg-info
 tmp/
 tmp2/
