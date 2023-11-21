@@ -39,6 +39,36 @@ ok_timestep_data = [
             linear_kinetic_energy=1.0,
         ),
         timestep_ok,
+    ),
+    (
+        dict(
+            time=1.0,
+            current_number_of_parcels=10.0,
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 2.0, 1.0),
+            linear_kinetic_energy=1.0,
+        ),
+        timestep_ok,
+    ),
+    (
+        dict(
+            time=1,
+            current_number_of_parcels="10",
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 2.0, 1.0),
+            linear_kinetic_energy=1.0,
+        ),
+        timestep_ok,
+    ),
+    (
+        dict(
+            time=1,
+            current_number_of_parcels="10.0",
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 2.0, 1.0),
+            linear_kinetic_energy=1.0,
+        ),
+        timestep_ok,
     )
 ]
 
@@ -76,6 +106,39 @@ bad_timestep_data = [
         ),
         AssertionError,
         "value of 'time' can not be < 0",
+    ),
+    (
+        dict(
+            time=1.0,
+            current_number_of_parcels=10.5,
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 2.0, 1.0),
+            linear_kinetic_energy=1.0,
+        ),
+        AssertionError,
+        "value of 'current_number_of_parcels' must be an integer",
+    ),
+    (
+        dict(
+            time=1.0,
+            current_number_of_parcels=-10,
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 2.0, 1.0),
+            linear_kinetic_energy=1.0,
+        ),
+        AssertionError,
+        "value of 'current_number_of_parcels' can not be < 0",
+    ),
+    (
+        dict(
+            time=1.0,
+            current_number_of_parcels="NO",
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 2.0, 1.0),
+            linear_kinetic_energy=1.0,
+        ),
+        ValueError,
+        "could not convert string to int: 'NO'",
     )
 ]
 
