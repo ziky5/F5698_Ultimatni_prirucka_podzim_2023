@@ -110,6 +110,26 @@ ok_timestep_data = [
             linear_kinetic_energy=1.0,
         ),
         timestep_ok,
+    ),
+    (
+        dict(
+            time=1,
+            current_number_of_parcels=10,
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 2.0, 1.0),
+            linear_kinetic_energy=1,
+        ),
+        timestep_ok,
+    ),
+    (
+        dict(
+            time=1,
+            current_number_of_parcels=10,
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 2.0, 1.0),
+            linear_kinetic_energy="1.0",
+        ),
+        timestep_ok,
     )
 ]
 
@@ -257,6 +277,39 @@ bad_timestep_data = [
         ),
         ValueError,
         "could not convert string to float: 'NO'",
+    ),
+    (
+        dict(
+            time=1.0,
+            current_number_of_parcels=10,
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 2.0, 1.0),
+            linear_kinetic_energy=-1.0,
+        ),
+        AssertionError,
+        "value of 'linear_kinetic_energy' can not be < 0",
+    ),
+    (
+        dict(
+            time=1.0,
+            current_number_of_parcels=10,
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 2.0, 1.0),
+            linear_kinetic_energy=(2.0, 2.0, 1.0),
+        ),
+        AssertionError,
+        "object type of 'linear_kinetic_energy' must be a float or int",
+    ),
+    (
+        dict(
+            time=1.0,
+            current_number_of_parcels=10,
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 2.0, 1.0),
+            linear_kinetic_energy=1000.0,
+        ),
+        CompError,
+        "the physical interconnection of 'linear_momentum' and 'linear_kinetic_energy' must be taken into account" ,
     )
 ]
 
