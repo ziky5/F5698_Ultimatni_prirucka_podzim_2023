@@ -79,6 +79,37 @@ ok_timestep_data = [
             linear_kinetic_energy=1.0,
         ),
         timestep_ok,
+    ),
+    (
+        dict(
+            time=1,
+            current_number_of_parcels=10,
+            current_mass_in_system=4.5,
+            linear_momentum=(2, 2, 1),
+            linear_kinetic_energy=1.0,
+        ),
+        timestep_ok,
+    ),
+    (
+        dict(
+            time=1,
+            current_number_of_parcels=10,
+            current_mass_in_system=4.5,
+            linear_momentum=("2.0", "2.0", "1.0"),
+            linear_kinetic_energy=1.0,
+        ),
+        timestep_ok,
+    ),
+    (
+        dict(
+            time=1,
+            current_number_of_parcels=10,
+            current_mass_in_system=4.5,
+            linear_momentum=[2.0, 2.0, 1.0],
+            # toto je trochu odvážné, ale já mám listy rád :-)
+            linear_kinetic_energy=1.0,
+        ),
+        timestep_ok,
     )
 ]
 
@@ -142,7 +173,7 @@ bad_timestep_data = [
     (
         dict(
             time=1.0,
-            current_number_of_parcels="NO",
+            current_number_of_parcels='NO',
             current_mass_in_system=4.5,
             linear_momentum=(2.0, 2.0, 1.0),
             linear_kinetic_energy=1.0,
@@ -170,7 +201,62 @@ bad_timestep_data = [
             linear_kinetic_energy=1.0,
         ),
         CompError,
-        "the physical interconnection of current_mass_in_system and current_number_of_parcels must be taken into account" ,
+        "the physical interconnection of 'current_mass_in_system' and 'current_number_of_parcels' must be taken into account" ,
+    ),
+    (
+        dict(
+            time=1.0,
+            current_number_of_parcels=10,
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 1.0),
+            linear_kinetic_energy=1.0,
+        ),
+        AssertionError,
+        "object 'linear_momentum' must consist of exactly three parameters",
+    ),
+    (
+        dict(
+            time=1.0,
+            current_number_of_parcels=10,
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 2.0, 1.0, 1.0),
+            linear_kinetic_energy=1.0,
+        ),
+        AssertionError,
+        "object 'linear_momentum' must consist of exactly three parameters",
+    ),
+    (
+        dict(
+            time=1.0,
+            current_number_of_parcels=10,
+            current_mass_in_system=4.5,
+            linear_momentum=(2.0, 2.0, 1.0, 1.0, 1.0),
+            linear_kinetic_energy=1.0,
+        ),
+        AssertionError,
+        "object 'linear_momentum' must consist of exactly three parameters",
+    ),
+    (
+        dict(
+            time=1.0,
+            current_number_of_parcels=10,
+            current_mass_in_system=4.5,
+            linear_momentum=2.0,
+            linear_kinetic_energy=1.0,
+        ),
+        AssertionError,
+        "object type of 'linear_momentum' must be a tuple or a list",
+    ),
+    (
+        dict(
+            time=1.0,
+            current_number_of_parcels=10,
+            current_mass_in_system=4.5,
+            linear_momentum=('NO','NO','NO'),
+            linear_kinetic_energy=1.0,
+        ),
+        ValueError,
+        "could not convert string to float: 'NO'",
     )
 ]
 
