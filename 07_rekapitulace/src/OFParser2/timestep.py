@@ -43,4 +43,20 @@ class TimeStep:
 
     @classmethod
     def from_str(cls, text: str):
-        pass
+        text_split = text.split("\n")
+        data = {}
+        for line in text_split:
+            line_split = line.split()
+            match line_split:
+                case ["Time", "=", time]:
+                    data["time"] = time
+                case ["Current", "number", "of", "parcels", "=", parcels]:
+                    data["current_number_of_parcels"] = parcels
+                case ["Current", "mass", "in", "system", "=", mass]:
+                    data["current_mass_in_system"] = mass
+                case ["Linear", "momentum", "=", lm_x, lm_y, lm_z]:
+                    data["linear_momentum"] = tuple([lm_x[1:], lm_y, lm_z[:-1]])
+                case ["Linear", "kinetic", "energy", "=", energy]:
+                    data["linear_kinetic_energy"] = energy
+
+        return cls(**data)
