@@ -1,6 +1,10 @@
 from dataclasses import dataclass
 
 
+class CompError(Exception):
+    pass
+
+
 @dataclass
 class TimeStep:
     time: float
@@ -12,4 +16,3 @@ class TimeStep:
     @classmethod
     def from_str(cls, text: str):
         pass
-    

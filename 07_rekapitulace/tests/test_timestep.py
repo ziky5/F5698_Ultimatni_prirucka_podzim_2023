@@ -1,5 +1,5 @@
 import pytest
-from OFParser2.timestep import TimeStep
+from OFParser2.timestep import TimeStep, CompError
 
 timestep_ok = TimeStep(
     time=1.0,
@@ -130,7 +130,7 @@ ok_timestep_data = [
             linear_kinetic_energy="1.0",
         ),
         timestep_ok,
-    )
+    ),
 ]
 
 
@@ -193,7 +193,7 @@ bad_timestep_data = [
     (
         dict(
             time=1.0,
-            current_number_of_parcels='NO',
+            current_number_of_parcels="NO",
             current_mass_in_system=4.5,
             linear_momentum=(2.0, 2.0, 1.0),
             linear_kinetic_energy=1.0,
@@ -221,7 +221,7 @@ bad_timestep_data = [
             linear_kinetic_energy=1.0,
         ),
         CompError,
-        "the physical interconnection of 'current_mass_in_system' and 'current_number_of_parcels' must be taken into account" ,
+        "the physical interconnection of 'current_mass_in_system' and 'current_number_of_parcels' must be taken into account",
     ),
     (
         dict(
@@ -272,7 +272,7 @@ bad_timestep_data = [
             time=1.0,
             current_number_of_parcels=10,
             current_mass_in_system=4.5,
-            linear_momentum=('NO','NO','NO'),
+            linear_momentum=("NO", "NO", "NO"),
             linear_kinetic_energy=1.0,
         ),
         ValueError,
@@ -309,8 +309,8 @@ bad_timestep_data = [
             linear_kinetic_energy=1000.0,
         ),
         CompError,
-        "the physical interconnection of 'linear_momentum' and 'linear_kinetic_energy' must be taken into account" ,
-    )
+        "the physical interconnection of 'linear_momentum' and 'linear_kinetic_energy' must be taken into account",
+    ),
 ]
 
 
