@@ -1,7 +1,10 @@
+from pathlib import Path
 from OFParser2.log_parser import parse
 from OFParser2.timestep import TimeStep
 
 DATA = """\
+HEADER
+
 Time = 8.190e-05
 
 Evolving kinematicCloud
@@ -82,3 +85,21 @@ def test_log_parser():
         linear_momentum=(-1.44664513e-21, -1.94003635e-21, -5.42703062e-20),
         linear_kinetic_energy=2.41789442e-16,
     )
+
+
+def test_real_log_data():
+    import os
+
+    test_path = Path(os.getenv("PYTEST_CURRENT_TEST").split("::")[0]).absolute()
+    with open(test_path.parent / "log.ParticleInEB") as f:
+        data = f.read()
+
+    tss = parse(data)
+
+    assert [ts.time for ts in tss] == [
+        1.000e-07,
+        2.000e-07,
+        3.000e-07,
+        4.000e-07,
+        5.000e-07,
+    ]

@@ -14,7 +14,7 @@ def parse(data: str) -> Sequence[TimeStep]:
 
     # iterujeme po dvojicich, nebot sudy element je radek s "Time = " a lichy
     # jsou data pro TimeStep
-    for i in range(0, len(split), 2):
+    for i in range(1, len(split), 2):
         tss.append(TimeStep.from_str(split[i] + split[i + 1]))
 
     return tss
