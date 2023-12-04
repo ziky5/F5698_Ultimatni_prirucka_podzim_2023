@@ -4,3 +4,9 @@ OFParser.egg-info
 OFParser2.egg-info
 tmp/
 tmp2/
+07_rekapitulace/build/lib/OFParser2/__init__.py
+07_rekapitulace/build/lib/OFParser2/__main__.py
+.gitignore
+07_rekapitulace/build/lib/OFParser2/log_parser.py
+.gitignore
+07_rekapitulace/build/lib/OFParser2/timestep.py
