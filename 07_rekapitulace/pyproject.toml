@@ -3,7 +3,12 @@ name = "OFParser2"
 version = "0.0.1"
 dependencies = [
     'importlib-metadata; python_version<"3.8"',
+    'click',
+    'plotly',
 ]
 
 [tool.setuptools.packages.find]
 where = ["src"]  # ["."] by default
+
+[project.scripts]
+of-parser = 'OFParser2.__main__:main'
