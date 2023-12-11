@@ -6,7 +6,7 @@ from OFParser2.timestep import TimeStep
 
 
 def parse(data: str) -> Sequence[TimeStep]:
-    split = re.split("(Time = \d\.\d+e-\d+\n)", data)
+    split = re.split(r"(Time = \d\.\d+e-\d+\n)", data)
     # get rid of empty strings
     split = [chunk for chunk in split if chunk]
 

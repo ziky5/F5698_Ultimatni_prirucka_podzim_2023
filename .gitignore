@@ -5,3 +5,4 @@ OFParser2.egg-info
 tmp/
 tmp2/
 .gitignore
+07_rekapitulace/build/lib/*
