@@ -4,3 +4,4 @@ OFParser.egg-info
 OFParser2.egg-info
 tmp/
 tmp2/
+.gitignore

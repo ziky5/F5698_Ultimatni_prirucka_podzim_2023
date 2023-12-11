@@ -1,11 +1,22 @@
 [project]
 name = "OFParser2"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
-    'importlib-metadata; python_version<"3.8"',
     'click',
     'plotly',
 ]
+authors = [
+  { name="Petr Zikan", email="zikan.p@gmail.com" },
+]
+description = "Python package that can parse OpenFoam log data."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
 
 [tool.setuptools.packages.find]
 where = ["src"]  # ["."] by default
